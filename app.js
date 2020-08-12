@@ -21,6 +21,19 @@ switch (comando) {
         }
         break;
 
+    case 'filtrar':
+        let listaNueva = porHacer.getListado();
+        let listaFiltrada = listaNueva.filter(tarea => tarea.completado);
+        if (listaFiltrada.indexOf('true')) {
+            for (let tarea of listaFiltrada) {
+                console.log('=======Por hacer======='.green);
+                console.log(tarea.descripcion);
+                console.log('Estado: ', tarea.completado);
+                console.log('======================='.green);
+            }
+        }
+        break;
+
     case 'actualizar':
         let actualizado = porHacer.actualizar(argv.descripcion, argv.completado);
         console.log(actualizado);
